@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './footerPage.css';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCcVisa } from "@fortawesome/free-brands-svg-icons";
-import { faCcMastercard } from "@fortawesome/free-brands-svg-icons";
-import { faCcPaypal } from "@fortawesome/free-brands-svg-icons";
-import { faGooglePlay } from "@fortawesome/free-brands-svg-icons";
+// import { faCcVisa } from "@fortawesome/free-brands-svg-icons";
+// import { faCcMastercard } from "@fortawesome/free-brands-svg-icons";
+// import { faCcPaypal } from "@fortawesome/free-brands-svg-icons";
+// import { faGooglePlay } from "@fortawesome/free-brands-svg-icons";
 // import { faCcVisa } from "@fortawesome/free-solid-svg-icons";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { faAppStore } from "@fortawesome/free-brands-svg-icons";
+// import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+// import { faAppStore } from "@fortawesome/free-brands-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const Footer = () => {

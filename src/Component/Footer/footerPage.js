@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './footerPage.css';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,13 +7,12 @@ import { faCcMastercard } from "@fortawesome/free-brands-svg-icons";
 import { faCcPaypal } from "@fortawesome/free-brands-svg-icons";
 import { faGooglePlay } from "@fortawesome/free-brands-svg-icons";
 // import { faCcVisa } from "@fortawesome/free-solid-svg-icons";
-import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+// import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faAppStore } from "@fortawesome/free-brands-svg-icons";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
+// import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const FooterPage = () => {
-    // const [year, setYear] = useSate()
-    const year = new Date().getFullYear()
+    // const year = new Date().getFullYear()
 
     return(
         <div className="container-main-footer">

@@ -10,7 +10,7 @@ const Members = ({isChecked, availability, countryName,  ageRangeStart,
                  ageRangeEnd, eyeColor, bustSize, toneskin, tonehair, speakLanguages, 
                 heightCM, weightLB, openGenderPick, setScrollToPosition, setPrevFilters, location }) => {
     
-    const [models, setModels] = useState([])
+    // const [models, setModels] = useState([])
 
 
     const [nextpage, setNextPage] = useState(10)

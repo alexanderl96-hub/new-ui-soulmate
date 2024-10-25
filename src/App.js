@@ -12,7 +12,7 @@ import NewJoiner from './Component/NewJoiner/newJoiner'
 
 
 function App() {
-  const [appOpenLoading, setAppOpenLoading] = useState(false);
+  // const [appOpenLoading, setAppOpenLoading] = useState(false);
   const [openFilter, setOpenFilter] = useState(false);
   const [openGenderPick, setOpenGenderPick] = useState('')
   const [scrollToBottom, setScrollToBottom] = useState(false)
@@ -49,13 +49,13 @@ function App() {
   }, [user, setUser]);
 
 
-  useEffect(()=>{
-    setTimeout(() =>{
-      setAppOpenLoading(true)
-    }, 12000)
-    setAppOpenLoading(false)
+  // useEffect(()=>{
+  //   setTimeout(() =>{
+  //     setAppOpenLoading(true)
+  //   }, 12000)
+  //   setAppOpenLoading(false)
 
-  },[])
+  // },[])
  
 console.log(openFilter, 'openFilter')
   return (

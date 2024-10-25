@@ -17,13 +17,13 @@ const HomePage = ({openFilter, setOpenFilter, openGenderPick,
                    setScrollToVIP, setPrevFilters}) => {
 
 const [countries, setCountries] = useState([])
-const [genders, setGenders] = useState([])
+// const [genders, setGenders] = useState([])
 const [eyesColor, setEyesColor] = useState([])
 const [hairColor, setHairColor] = useState([])
 const [skinColor, setSkinColor] = useState([])
 const [languages, setLanguagues] = useState([])
-const [activities, setActivities] = useState([])
-const [raceType, setRaceType] = useState([])
+// const [activities, setActivities] = useState([])
+// const [raceType, setRaceType] = useState([])
 const [bust, setBust] = useState([])
 const [getCountryAndCities , setGetCountryAndCities] = useState([])
 
@@ -59,28 +59,30 @@ const [currentTestimonial, setCurrentTestimonial] = useState([]);
 const [isChangingTestimonion, setIsChangingTestimonion] = useState(false);
 const [scrollToPosition, setScrollToPosition] = useState(false)
 
+const [testimonials, setTestimonials] = useState([]);
+
 
 useEffect(()=>{
     if(countries.length < 1){
          axios.get('https://meet-yoursoul-mate-backend.adaptable.app/countries')
          .then(response => {
             const data_Countries = response.data.data_countries.flatMap(a => a.countries);
-            const data_Genders  = response.data.data_countries.flatMap(a => a.genders);
+            // const data_Genders  = response.data.data_countries.flatMap(a => a.genders);
             const data_EyeColors  = response.data.data_countries.flatMap(a => a.eyecolors);
             const data_HairColors  = response.data.data_countries.flatMap(a => a.haircolors);
             const data_SkinColors  = response.data.data_countries.flatMap(a => a.skincolors);
             const data_Lenguages  = response.data.data_countries.flatMap(a => a.languages);
-            const data_Activities  = response.data.data_countries.flatMap(a => a.activities);
-            const data_RaceType  = response.data.data_countries.flatMap(a => a.race_type);
+            // const data_Activities  = response.data.data_countries.flatMap(a => a.activities);
+            // const data_RaceType  = response.data.data_countries.flatMap(a => a.race_type);
             const data_BustSize  = response.data.data_countries.flatMap(a => a.bust_size);
           
-            setGenders(data_Genders)
+            // setGenders(data_Genders)
             setEyesColor(data_EyeColors)
             setHairColor(data_HairColors)
             setSkinColor(data_SkinColors)
             setLanguagues(data_Lenguages)
             // setActivities(data.map(a => a.activities))
-            setRaceType(data_RaceType)
+            // setRaceType(data_RaceType)
             setBust(data_BustSize)
             setCountries(data_Countries.map(a => a.country))
             setGetCountryAndCities(data_Countries)
@@ -94,61 +96,37 @@ useEffect(()=>{
  }, [countries])
 
 
+ useEffect(() => {
+    // Fetch data from the API only once
+    const fetchData = async () => {
+      try {
+        const res = await axios.get('https://meet-yoursoul-mate-backend.adaptable.app/testimonion');
+        
+        // Check if data is structured correctly
+        if (
+          res.data && 
+          Array.isArray(res.data.data_testimonion) &&
+          res.data.data_testimonion.length > 0 &&
+          Array.isArray(res.data.data_testimonion[0].testimonials)
+        ) {
+          // Properly access the testimonials
+          const testimonionData = res.data.data_testimonion[0].testimonials;
+          setTestimonials(testimonionData);
+          console.log("Formatted Testimonials:", testimonionData);
+        } else {
+          console.warn("Unexpected response format:", res.data);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    // Call fetchData once
+    fetchData();
+  }, []); 
 //  console.log("Countries: ", location
 //  )
 
-
-const Testimonials = [{
-    name: 'Ricky',
-    testimonion: ` Meet Your Soulmate has truly 
-    been a game-changer for me. After years of fruitless searching on other dating 
-    platforms, I decided to give it a try, and I'm so glad I did. Within weeks of 
-    creating my profile, I connected with someone who not only shares my interests 
-    but also understands me on a level I never thought possible. We're now inseparable, 
-    and I have this incredible platform to thank for bringing us together. If you're 
-    serious about finding your perfect match, look no further than Meet Your Soulmate.`
-},{
-    name: 'Emily',
-    testimonion: ` Meet Your Soulmate has completely transformed my dating experience. 
-    After countless unsuccessful attempts on other platforms, I decided to give this one a shot, 
-    and it was the best decision I ever made. Within a month of joining, I met someone who not only 
-    shares my hobbies but also connects with me on a deeper level than I ever imagined. We're now 
-    incredibly close, and I owe it all to this amazing service. If you're genuinely looking for your 
-    ideal partner, Meet Your Soulmate is the way to go.`
-},{
-    name: 'Michael',
-    testimonion: ` Meet Your Soulmate has been a revelation in my search for love. 
-    After numerous disappointments with other dating sites, I decided to try this one, 
-    and it exceeded all my expectations. In just a few weeks, I met someone who shares my passions 
-    and understands me in ways I never thought possible. We're now in a wonderful relationship, 
-    and I couldn't be happier. For anyone serious about finding their match, Meet Your Soulmate is the place to be.`
-},{
-    name: 'Sophia',
-    testimonion: ` Meet Your Soulmate has truly changed my life. After struggling to find a genuine connection 
-    on other dating platforms, I gave this one a try, and it was the best decision I ever made. 
-    Within a few weeks, I met someone who not only shares my interests but also understands me on a deeper level. 
-    We're now inseparable, and I have this fantastic platform to thank for bringing us together. 
-    If you're committed to finding your perfect match, look no further than Meet Your Soulmate.`
-},{
-    name: 'James',
-    testimonion: ` Meet Your Soulmate has been a game-changer in my dating journey. 
-    After many failed attempts on other sites, I decided to give this one a try, and it didn't disappoint. 
-    Within a short time, I connected with someone who shares my interests and understands me deeply. 
-    We're now happily together, and I have this amazing platform to thank. 
-    If you're serious about finding your perfect partner, Meet Your Soulmate is the answer.`
-},{
-    name: 'Olivia',
-    testimonion: ` Meet Your Soulmate has been a lifesaver for me. After years of unsuccessful searches on other dating platforms, 
-    I decided to give this one a try, and I'm so glad I did. In a matter of weeks, I met someone who shares my passions 
-    and understands me like no one else. We're now in a loving relationship, and I owe it all to this incredible service. 
-    If you're dedicated to finding your true match, Meet Your Soulmate is the perfect choice.`
-}
-
-
-
-
-
-]
          
 useEffect(()=>{
     if(!countryName){
@@ -171,7 +149,7 @@ useEffect(()=>{
         const getCities = Cities.filter(a => a.toLowerCase().startsWith(locationName.toLowerCase()));
         setFilterCities(getCities)
     }
-},[locationName, setFilterCities])
+},[locationName, setFilterCities, getCountryAndCities])
 
 
         
@@ -399,20 +377,28 @@ useEffect(() => {
   }, [scrollToVIP, setScrollToVIP]);
 
  // Dinamic auto play for testimonial left for clients 
-  useEffect(() => {
-    setCurrentTestimonial(Testimonials[0])
+ useEffect(() => {
+    // Set the initial testimonial to the first one in the list
+    if (testimonials.length > 0) {
+      setCurrentTestimonial(testimonials[0]);
+    }
+  
     const intervalId = setInterval(() => {
-        setIsChangingTestimonion(true);
-        setTimeout(() => {
-            const randomIndex = Math.floor(Math.random() * Testimonials.length);
-            setCurrentTestimonial(Testimonials[randomIndex]);
-            setIsChangingTestimonion(false);
-        }, 3000); // Change testimonial after 3 seconds
+      setIsChangingTestimonion(true);
+      setTimeout(() => {
+        if (testimonials.length > 0) {
+          // Get a random testimonial index
+          const randomIndex = Math.floor(Math.random() * testimonials.length);
+          setCurrentTestimonial(testimonials[randomIndex]);
+        }
+        setIsChangingTestimonion(false);
+      }, 3000); // Change testimonial after 3 seconds
     }, 10000); // Interval to change testimonial every 10 seconds
-
+  
     // Cleanup the interval on component unmount
     return () => clearInterval(intervalId);
-}, []);
+  }, [testimonials]); // Dependency to re-run when testimonials change
+  
 
 
 
@@ -652,7 +638,7 @@ useEffect(() => {
                              +31 387-381-122
                         </div>
                     </div>
-                    <Members isChecked={isChecked} 
+                    <Members     isChecked={isChecked} 
                                  availability={availability}
                                  countryName={countryName} 
                                 //  locationName={locationName}
@@ -693,7 +679,7 @@ useEffect(() => {
                                  style={{color: isChangingTestimonion ? 'transparent' : 'white'}}>
                                 <em> " {currentTestimonial.testimonion} " </em>
                             </div>
-                            <div style={{color: isChangingTestimonion ? 'transparent' : 'white'}}>- {currentTestimonial.name} -</div>
+                            <div style={{color: isChangingTestimonion ? 'transparent' : 'white'}}>- {currentTestimonial.memberName} -</div>
                         </div>
 
                     </div>

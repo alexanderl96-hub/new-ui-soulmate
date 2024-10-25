@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+
 import './galery.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
@@ -9,14 +10,14 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 const Galery = ({setActivateGalery, imagePerfile, imagePosition}) => {
   // const photos = [images, images, images, images, images, images, images,  images, images, images, images]
   const [next, setNext] = useState(0);
-  const [trackPosition, setTrackPosition] = useState(imagePosition)
+  // const [trackPosition, setTrackPosition] = useState(imagePosition)
   const thumbnailRef = useRef(null);
   
   useEffect(() => {
-    if (trackPosition > 0) {
-      setNext(trackPosition);
+    if (imagePosition > 0) {
+      setNext(imagePosition);
     }
-  }, [trackPosition]);
+  }, [imagePosition]);
 
   function increment() {
     if (next < imagePerfile.length - 1) {

@@ -41,7 +41,8 @@ const MembersView = ({prevFilters})=> {
     const [initialRatingValue, setInitialRatingValue] = useState(0)
     const [ratingByCommet, setRatingByComment] = useState('Your rate')
     const [greeting, setGreeting] = useState('')
-    const [listOfPeople, setListOfPeople] = useState(prevFilters.allMembers) //allMembers resultReadyForMemberView
+    const listOfPeople = prevFilters.allMembers
+    // const [listOfPeople, setListOfPeople] = useState(prevFilters.allMembers) //allMembers resultReadyForMemberView
     const [filterMemberVideos, setFilterMemberVideos] = useState([])
     const [chatbox_Conversation, setChatbox_Conversation] = useState([])
     const [isAutoScroll, setIsAutoScroll] = useState(true);
@@ -91,7 +92,7 @@ const MembersView = ({prevFilters})=> {
 
       return () =>  clearInterval(intervalId);
       
-    }, []);
+    }, [setIsAutoScroll, setChatbox_Conversation, isAutoScroll ]);
 
 
 
@@ -265,7 +266,8 @@ useEffect(() => {
           setNextName(nextMember ? nextMember.firstname : '');
         }
       }
-    }, [memberById, listOfPeople]);
+    }, [memberById, listOfPeople,   check()
+     ]);
     
     function changeMemberBack() {
       // Find the current index of the member
@@ -296,7 +298,7 @@ useEffect(() => {
         const tooltip = check(initialRatingValue);
         setRatingByComment(tooltip);
       }
-    }, [initialRatingValue] )
+    }, [initialRatingValue, check] )
 
     const handleTextChange = (event) => {
       setCommentByMember({
