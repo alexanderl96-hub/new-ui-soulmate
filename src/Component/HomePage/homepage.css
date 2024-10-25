@@ -1,0 +1,468 @@
+.app-homepage {
+  background-color: #ffebf2;
+  height: 90.7vh;
+  display: flex;
+  font-size: calc(10px + 2vmin);
+  color: #fff;
+  box-shadow: -0px -5px 5px -5px rgba(0, 0, 0, 0.75);
+}
+.container-left-side{
+    flex: -1;
+    background-color: #070606df; 
+    padding: 10px 10px;
+    overflow-y: scroll;
+    transition: all 0.7s ease-in-out;
+    /* min-width: 300px; */
+}
+.container-left-side::-webkit-scrollbar{
+    width: 0px;
+}
+.container-right-side{
+    flex: 5;
+    overflow: auto;
+    /* background-image: url('/Users/alexanderlarosaperez/Documents/Applications/Meet-Your-SoulMate/meet-your-soulmate/src/Sources_image/fashion-portrait-beautiful-sexy-young-adult-blond-woman-model-wearing-black-erotic-lingerie-lying-bed-sunset.jpg'); */
+    background-image: url('/Users/alexanderlarosaperez/Documents/Applications/Meet-Your-SoulMate/meet-your-soulmate/src/Sources_image/love image.jpeg');
+    background-repeat: no-repeat;
+    background-position: 'center';
+    background-size: 100% 100%;
+    box-shadow: inset 0px -300px 20px 20px #1f1f1faf;
+}
+.container-right-side::-webkit-scrollbar{
+    width: 0px;
+}
+.container-VIP-Models-Title-home{
+    display:flex;
+    height: 150px; 
+    margin-top:25px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.container-VIP-divider-home {
+    width: 30%;
+    background: gray;
+    border-radius: 30px;
+    border: 0.5px solid #8482829d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-VIP-divider-middle-home {
+    height: 50px;
+    width: 30%;
+    background: transparent;
+    border-radius: 30px;
+    border: 1.2px solid #8482829d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+}
+
+.container-input{
+    padding: 8px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #fff ;
+    cursor: pointer;
+}
+.container-input label{
+    font-size: 18px;
+    cursor: 'pointer' 
+}
+.container-input input{
+    margin-top: 4px;
+    width: 95%;
+    outline: none;
+}
+.container-input-vip{
+    padding: 8px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    width: 95%;
+    outline: none;
+}
+
+.open-countries{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    cursor: pointer;
+}
+.open-countries-text{
+    width: 280px; 
+}
+
+.countries{
+    padding:2px 2px;
+    overflow-y: scroll; 
+    height: 300px;
+    cursor:pointer;
+}
+.countries::-webkit-scrollbar{
+    width: 0px;
+}
+.countries div{
+    height: 20px;
+    font-size: 16px;
+    width: 275px;
+}
+.show-countries:hover{
+   background: gray;
+}
+.country-icon{
+    color: #fff; 
+    font-size: 30px; 
+    padding-right: 5px;  
+}
+.country-icon-whatsapp{
+    color: #fff; 
+    font-size: 19px; 
+    padding-right: 5px;  
+}
+.height-weight-icon{
+    color: #fff; 
+    font-size: 15px; 
+    padding-right: 5px;  
+    margin-left: 55px; 
+    cursor: pointer;
+}
+
+.eyesColor{
+    padding: 2px 2px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid;
+    border-radius: 2.5px;
+    width: 290px;
+}
+.eyesColor-inside{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.eyesColor-inside label{
+    width: 115px;
+    font-size: 13.5px;
+}
+
+.age{
+    padding: 2px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid;
+    width: 300px;
+    border-radius: 2.5px;
+
+}
+.age label{ 
+    font-size: 16px;
+}
+.age-inside{
+    padding: 5px 5px;;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5px;
+}
+
+.bust{
+    padding: 2px 2px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid;
+    border-radius: 2.5px;
+    width: 290px;
+    overflow-y: scroll; 
+    height: 300px;
+}
+.bust::-webkit-scrollbar{
+    width: 0px;
+}
+
+.bust-inside{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bust-inside label{
+    width: 76px;
+    font-size: 13.5px;
+}
+
+.skinColor{
+    padding: 2px 2px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid;
+    border-radius: 2.5px;
+    width: 290px;
+}
+.skinColor-inside{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.skinColor label{
+    width: 345px;
+    font-size: 13.5px;
+    margin-left: 5px;
+}
+
+.haircolor{
+    padding: 2px 2px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid;
+    border-radius: 2.5px;
+    width: 290px;
+}
+.haircolor-inside{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.haircolor-inside label{
+    width: 120px;
+    font-size: 13.5px;
+}
+
+.languagues{
+    padding: 2px 2px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid;
+    overflow-y: scroll;
+    border-radius: 2.5px;
+    width: 290px;
+    height: 300px;
+}
+.languagues::-webkit-scrollbar{
+    width: 0px;
+}
+.languagues-inside{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 15px;
+    height: 20px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+.languagues-inside:hover{
+    background: rgba(128, 128, 128, 0.727);
+    color: #fff;
+    transition: all 0.5s ease;
+}
+.languagues-inside p{
+    width: 100%
+}
+.languagues-inside p:hover{
+    margin-left: 10px;
+}
+
+.container-input-availability{
+    padding: 8px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    width: 95%;
+}
+
+.container-input-location{
+    padding: 8px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.location{
+    padding:2px 2px;
+    overflow-y: scroll; 
+    height: 300px;
+    cursor:pointer;
+    width: 300px;
+    font-size: 14px;
+}
+.location::-webkit-scrollbar{
+    width: 0px;
+}
+
+.container-input-location label {
+    font-size: 18px;
+}
+.container-input-location input{
+    width: 95%;
+    outline: none;
+}
+.container-button{
+    padding: 8px 8px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+.container-button div{
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid white;
+    width: 70px;
+    padding: 2px 2px;
+    border-radius: 30px;
+}
+.container-button div:hover{
+    background: #edebeb;
+    color: #000000d8;
+}
+
+
+
+.container-right-side-main{
+    display: flex;  
+    padding-left: 15px;  
+    padding-right: 7.5%; 
+    padding-top: 3%;
+    justify-content: flex-end;
+    align-items: center;
+}
+.phone-number{
+    height: 35px; 
+    width: 120px;
+    background: #c10077;
+    padding: 3px 3px; 
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: medium; 
+    margin: 10px;
+}
+.whatsapp-number{
+    height: 35px; 
+    width: 170px;
+    background: #c10077;
+    padding: 3px 3px; 
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: medium; 
+    margin: 10px;
+}
+
+
+.container-middle-nav{
+    display: flex; 
+    padding: 20px 20px;
+    justify-content: space-evenly; 
+    align-items: center;
+    background: #54153b; 
+    margin-top: 200px;
+}
+.middle-nav-title{
+    width: 43%; 
+    color: #fff; 
+    font-size: 1em; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-right: 2%;
+}
+.middle-nav-button{
+      width: 30%;
+      background: linear-gradient(to top, #ae8625, #f2ef8a, #ae8625);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      border: 3px solid #111;
+      border-style: double;
+      border-radius: 30px;
+      font-weight: 500;
+      color: #111;
+      font-size: 0.7em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 5px;
+      box-sizing: border-box; 
+}
+.container-middle-nav-second{
+    background: #03000191; 
+    margin-top: -25px; 
+    height: 450px; 
+}
+.middle-nav-second{
+    height: 300px; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    padding: 2em 5em; 
+    color: #f1f1f1;
+}
+.middle-nav-second-comment{
+    margin: auto;  
+    font-size: 2vw; 
+    
+}
+.middle-nav-second-comment-text{
+    margin: auto; 
+    padding: 1em 1em; 
+    display: flex;
+    font-size: 1.8vw;   
+    font-family: italic;
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
+    height: 150px;
+    transition: font-family .9s ease, color .9s ease .1s;
+}
+.container-middle-about{
+    display: flex; 
+    padding: 5px 20px; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    /* background: #13060d91;  */
+    background: #03000191; 
+   
+}
+.container-middle-about-first{
+    font-size: 2vw; 
+    margin-bottom: 30px;
+    margin-top: 7em;
+}
+.middle-about-parragraph{
+    text-align: justify; 
+    font-size: 1.4vw;
+    padding: 15px 15px; 
+}

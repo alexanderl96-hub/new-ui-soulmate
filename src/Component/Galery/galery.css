@@ -1,0 +1,124 @@
+.main-galery-photos{
+    position: absolute;
+    height: 110vh;
+    width: 100%;
+    background-color: #150720;
+    color: white;
+    padding: 0 ;
+    top: 0;
+    margin: 0;
+    display: flex;
+    flex-direction:column ;
+    justify-content: center;
+}
+.galery-navbar{
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 10px;
+}
+.galery-nav-icon-heart{
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #ffffff6c;
+}
+.galery-nav-icon-heart:hover {
+    color: #fff;
+ }
+ 
+.galery-nav-icon-x{
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #ffffff6c;
+}
+.galery-nav-icon-x:hover {
+   color: #fff;
+}
+
+
+.container-galery-photos{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.container-full-zise{
+    height: 500px;
+    margin-top: -6em;
+    width: 1100px;
+    display: flex;
+    justify-content: center;
+}
+.container-hold-arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 70px;
+}
+.container-hold-arrow div{
+    display: flex; 
+    justify-content: center; 
+    text-align:center;
+    width: 4em; 
+    height: 4em; 
+    border-radius: 50px;
+}
+.container-hold-arrow:hover .container-full-zise-pre{
+    color: #858789d8;
+}
+.container-hold-arrow:hover .container-full-zise-next{
+    color: #858789d8;
+}
+.full-size-photos{
+    width: 900px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    
+}
+.container-full-zise-pre{
+    font-size: 4em;
+    color: #8587895a;
+}
+.container-full-zise-next{
+    font-size: 4em;
+    color: #8587895a;
+}
+.full-size-photos img{
+    background-repeat: no-repeat;
+    background-position: 'center'; 
+    background-size: 100% 100%;
+    box-shadow: inset 0px -300px 20px 20px #1f1f1faf;
+    transition: all 0.9s ease ;
+}
+.container-small-size{
+    margin-top: 10px;
+    height: 120px;
+    display: flex;
+    display: inline-block;
+    width: 80%; /* Set the desired width */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent child elements from wrapping to the next line */
+    padding: 5px; /* Optional: Add padding */
+    box-sizing: border-box;
+}
+.container-small-size::-webkit-scrollbar{
+    width: 0px;
+    height: 0px;
+}
+.small{
+    width: 120px; 
+    height: 120px; 
+    border-right: 1px solid #ddd; 
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+.container-small-size img:last-child {
+    border-right: none; /* Remove the right border from the last child */
+
+}

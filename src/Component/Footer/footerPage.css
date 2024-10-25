@@ -1,0 +1,54 @@
+.container-main-footer {
+  min-height: 250px;
+  color: #fff;
+  background: linear-gradient(to bottom, #03000191, #000000);
+}
+.country-icon-footer {
+  color: #fff;
+  font-size: 45px;
+  padding-right: 5px;
+}
+.footer-diveder {
+  height: 1px;
+  background: linear-gradient(to top, #89691c, #c4c16a, #8f6c1c);
+}
+.whatsapp-number-footer{
+    height: 25px; 
+    width: 170px;
+    background: #c10077;
+    padding: 3px 3px; 
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: medium; 
+    margin: 10px;
+}
+/* .footer-soulmate{
+  font-size: 1vw; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  gap: 40px;  
+  height: 50px;
+  padding-left: 5%; 
+  padding-right: 5%;
+} */
+.country-icon-whatsapp-footer{
+    color: #fff; 
+    font-size: 18px; 
+    padding-right: 5px;  
+}
+.footer-soulmate-2{
+  color: #fff;
+  font-size: 1vw; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  gap: 40px;  
+  height: 50px;
+  padding-left: 5%; 
+  padding-right: 5%;
+  background: linear-gradient(to bottom, #030001f1, #000000);
+}

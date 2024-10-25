@@ -1,20 +1,15 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: #3b82f6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,16 +18,66 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.App-Component{
+  background-color: #ffebf2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #1f1f1f;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: app-logo-flip infinite 5s linear;
   }
+}
+
+@keyframes app-logo-flip {
+  from {  
+    transform: perspective(300px) scale3d(1, 1, 1) translate3d(0, 0, 0) 
+    rotate3d(0, 1, 0, -360deg);
+    animation-timing-function: ease-out;
+    filter: invert(49%) 
+            sepia(101%) 
+            saturate(2442%) 
+            hue-rotate(137deg) 
+            brightness(40%) 
+            contrast(50%); 
+   
+  }
+
+  40% {
+    transform: perspective(300px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+      rotate3d(0, 1, 0, -190deg);
+    animation-timing-function: ease-out;
+  }
+
+  50% {
+    transform: perspective(300px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+      rotate3d(0, 1, 0, -170deg);
+    animation-timing-function: ease-in;
+    filter: invert(29%) 
+            sepia(95%) 
+            saturate(4442%) 
+            hue-rotate(337deg) 
+            brightness(80%) 
+            contrast(150%);
+  }
+
+  80% {
+    transform: perspective(300px) scale3d(1, 1, 1) translate3d(0, 0, 0)
+      rotate3d(0, 1, 0, 0deg);
+    animation-timing-function: ease-in;
+  }
+
   to {
-    transform: rotate(360deg);
+    transform: perspective(300px) scale3d(1, 1, 1) translate3d(0, 0, 0) 
+    rotate3d(0, 1, 0, 0deg);
+    animation-timing-function: ease-in;
   }
 }
+

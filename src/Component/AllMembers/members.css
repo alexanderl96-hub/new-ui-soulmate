@@ -1,0 +1,120 @@
+.members-container{
+   padding: 25px 25px;
+}
+.members-container-VIP-present{
+    /* margin-top: -39.8px;
+    background-image: url('/Users/alexanderlarosaperez/Documents/Applications/Meet-Your-SoulMate/meet-your-soulmate/src/Sources_image/fashion-portrait-beautiful-sexy-young-adult-blond-woman-model-wearing-black-erotic-lingerie-lying-bed-sunset.jpg');
+    background-repeat: no-repeat;
+    background-position: 'center';
+    background-size: 100% 70%; */
+}
+.container-members-display{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-left: 1.8%;
+    padding-right: 1.8%;
+    gap: 20px;
+    min-height: 300px;
+}
+
+.container-VIP-Models-Title{
+    display:flex;
+    height: 300px; 
+    margin-top:40px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.container-VIP-divider {
+    width: 30%;
+    background: gray;
+    border-radius: 30px;
+    border: 1px solid rgba(66, 65, 65, 0.853);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-VIP-divider-middle {
+    height: 50px;
+    width: 30%;
+    background: transparent;
+    border-radius: 30px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+
+
+.members-card{
+    height: 300px;
+    width: 240px;
+    background: 'gray';
+    /* border: 0.5px solid black; */
+    border-radius: 2px;
+    background-color: blue; 
+    cursor: pointer;
+    border-bottom: 0.5px solid black;
+}
+.square-newMember-sign{
+    background: #ffff00;
+    color: black;
+    font-size: x-small;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 35px; /* Adjust width as needed */
+    height: 25px; /* Adjust height as needed */
+}
+
+
+.square-width-diagonbal-VIP{
+    background: #ffff00;
+    color: black;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 35px; /* Adjust width as needed */
+    height: 25px; /* Adjust height as needed */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+.square-width-diagonbal-VIP::before{
+ content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent; /* Adjust the height of the top border */
+  border-bottom: 30px solid transparent; /* Adjust the height of the bottom border */
+  border-left: 50px solid ; 
+
+}
+
+
+
+
+
+
+
+.container-dots{
+    display: flex; 
+    width: 40%; 
+    justify-content: flex-start;
+    overflow-x: scroll; 
+    align-items:center;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.container-dots::-webkit-scrollbar{
+    width: 0px;
+    height: 0px;
+}
