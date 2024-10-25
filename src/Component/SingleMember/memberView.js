@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import axios from 'axios';
 import './memberView.css';
 import { Rating } from 'react-simple-star-rating'
@@ -191,20 +191,23 @@ useEffect(() => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   
-    const tooltipArray = [
-      "Terrible",
-      "Terrible+",
-      "Bad",
-      "Bad+",
-      "Average",
-      "Average+",
-      "Great",
-      "Great+",
-      "Awesome",
-      "Awesome+"
-    ];
+   
 
-    const check = (user) => {
+    const check = useCallback((user) => {
+      const tooltipArray = [
+        "Terrible",
+        "Terrible+",
+        "Bad",
+        "Bad+",
+        "Average",
+        "Average+",
+        "Great",
+        "Great+",
+        "Awesome",
+        "Awesome+"
+      ];
+
+
       if (rating > 10) {
         setRating(5);
         return tooltipArray[9];
@@ -230,7 +233,7 @@ useEffect(() => {
       } else if (user >= 4.5 && user <= 10) {
         return tooltipArray[9];
       }
-    };
+    },[])
 
 
     function scrollToTop() {
