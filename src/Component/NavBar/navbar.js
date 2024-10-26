@@ -125,79 +125,39 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
 
   
 
-    // useEffect(() => {
-    //   if (data && gendern === '' && refreshUser === false) {
-    //      const filteredProfiles = listOfPeople.filter(person =>
-    //                 person.firstname.toLowerCase().includes(data.toLowerCase()) 
-    //               );
-    //     setNameProfile(filteredProfiles);
-    //     if (filteredProfiles.length > 0) {
-    //       setTimeout(() => {
-    //         setData('');
-    //       }, 20000);
-    //     }
-    //     console.log(filteredProfiles);
-    //   } else if (data && gendern !== '' && refreshUser === false) {
-    //         const filteredProfiles = listOfPeople.filter(person =>
-    //           person.gender === gendern && person.firstname.toLowerCase().includes(data.toLowerCase()) 
-    //         );
-    //         setNameProfile(filteredProfiles);
-          
-    //   }else if(data && gendern === '' && refreshUser === true){
-    //     const filteredProfiles = listOfPeople.filter(person =>
-    //       person.firstname.toLowerCase().includes(data.toLowerCase()) 
-    //     );
-    //     setNameProfile(filteredProfiles);
-    //   }else if(data && gendern === '' && refreshUser === true){
-    //     const filteredProfiles = listOfPeople.filter(person =>
-    //       person.gender === gendern && person.firstname.toLowerCase().includes(data.toLowerCase()) 
-    //     );
-    //     setNameProfile(filteredProfiles);
-      
-    //   }
-    // }, [data, gendern, listOfPeople, setNameProfile ]);
-
     useEffect(() => {
-      if (data && refreshUser === false) {
-        // Case when refreshUser is false and data is present
-        if (gendern === '') {
-          // Filter without gender filter
-          const filteredProfiles = listOfPeople.filter(person =>
-            person.firstname.toLowerCase().includes(data.toLowerCase())
-          );
-          setNameProfile(filteredProfiles);
-    
-          // Reset data after 20 seconds if there are results
-          if (filteredProfiles.length > 0) {
-            setTimeout(() => {
-              setData('');
-            }, 20000);
-          }
-        } else {
-          // Filter with gender filter
-          const filteredProfiles = listOfPeople.filter(person =>
-            person.gender === gendern && person.firstname.toLowerCase().includes(data.toLowerCase())
-          );
-          setNameProfile(filteredProfiles);
+       if(refreshUser === true){
+        axios.get("https://meet-yoursoul-mate-backend.adaptable.app/newJoiner")
+             .then(res => {
+
+                   setListOfPeople(res.data.data_newJoiner)
+                   setRefreshUser(false)
+             } )
+         .catch( res =>  console.log("Response error => ", res.data))
+       }
+
+
+      if (data && gendern === '' ) {
+         const filteredProfiles = listOfPeople.filter(person =>
+                    person.firstname.toLowerCase().includes(data.toLowerCase()) 
+                  );
+        setNameProfile(filteredProfiles);
+        if (filteredProfiles.length > 0) {
+          setTimeout(() => {
+            setData('');
+          }, 20000);
         }
-      } else if (data && refreshUser === true) {
-        // Case when refreshUser is true and data is present
-        if (gendern === '') {
-          // Filter without gender filter
-          const filteredProfiles = listOfPeople.filter(person =>
-            person.firstname.toLowerCase().includes(data.toLowerCase())
-          );
-          setNameProfile(filteredProfiles);
-        } else {
-          // Filter with gender filter
-          const filteredProfiles = listOfPeople.filter(person =>
-            person.gender === gendern && person.firstname.toLowerCase().includes(data.toLowerCase())
-          );
-          setNameProfile(filteredProfiles);
-        }
+        console.log(filteredProfiles);
+      } else if (data && gendern !== '' && refreshUser === false) {
+            const filteredProfiles = listOfPeople.filter(person =>
+              person.gender === gendern && person.firstname.toLowerCase().includes(data.toLowerCase()) 
+            );
+            setNameProfile(filteredProfiles);
+          
       }
-    }, [data, gendern, listOfPeople, setNameProfile, refreshUser]);
-    
+    }, [data, gendern, listOfPeople, setNameProfile, setListOfPeople ]);
+
+
 
     const redirectToPage = (path) => {
       navigate(path);
