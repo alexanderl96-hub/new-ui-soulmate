@@ -31,6 +31,7 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
   const [navbarUser, setNavbarUser] = useState([])
   const [messageResponde, setMessageResponde] = useState('')
   const [updateUserStatus, setUpdateUserStatus] = useState([])
+  const [refreshUser, setRefreshUser] = useState(false)
 
   const [sendDataCheck, setSendDataCheck] = useState(false)
 
@@ -103,7 +104,7 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
                         )
                       .catch( error =>  console.log("Response error => ", error)) 
 
-
+                      setRefreshUser(true)
 
                 } else {
                   console.error('findUser[0] is not a valid object:', findUser[0]);
@@ -120,7 +121,7 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
           })
            .catch( res =>  console.log("Response error => ", res.data))
     },[emailLogin, passwordLogin,  sendDataCheck, setNavbarUser, setUpdateUserStatus,
-      setEmailLogin, setPasswordLogin, setLoginUser, setMessageResponde ])
+      setEmailLogin, setPasswordLogin, setLoginUser, setMessageResponde, setRefreshUser ])
 
   
 
@@ -142,6 +143,8 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
             );
             setNameProfile(filteredProfiles);
           
+      }else if(refreshUser === true){
+        setNameProfile(listOfPeople)
       }
     }, [data, gendern, listOfPeople, setNameProfile ]);
 
@@ -295,7 +298,7 @@ function resetActiveUSer() {
          )
        .catch( error =>  console.log("Response error => ", error)) 
 
-
+       setRefreshUser(true)
 }
 
 
