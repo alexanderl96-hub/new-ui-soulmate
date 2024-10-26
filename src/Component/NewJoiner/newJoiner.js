@@ -1419,7 +1419,7 @@ console.log("register: ", newJoinRegistration)
         return;  // Stop form submission if validation fails
     }
     
-  axios.post('http://localhost:5050/newMember', newJoinRegistration)
+  axios.post('https://meet-yoursoul-mate-backend.adaptable.app/newMember', newJoinRegistration)
         .then(res =>
             {
               setActiveFinalRegister(false)
