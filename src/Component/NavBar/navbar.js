@@ -49,7 +49,7 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
           setListOfPeople(res.data.data_newJoiner)
         )
       .catch( res =>  console.log("Response error => ", res.data))
-     },[])
+     },[setListOfPeople])
 
     useEffect(()=>{
            axios.get("https://meet-yoursoul-mate-backend.adaptable.app/newMember")
