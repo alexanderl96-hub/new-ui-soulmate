@@ -310,6 +310,7 @@ function resetActiveUSer() {
        .catch( error =>  console.log("Response error => ", error)) 
 
        setRefreshUser(true)
+       redirectToPage('/')
 }
 
 
@@ -412,7 +413,7 @@ console.log("messageResponde: ", messageResponde, navbarUser.imageprofile)
            <div 
                 style={{display: 'flex', flexDirection: 'column', cursor: 'pointer'}}>
                 {!user.firstname &&  
-                          <h4 onClick={() => setLoginUser(true)
+                          <h4 onClick={() =>{setLoginUser(true); redirectToPage('/')}
                                               }>LOGIN</h4>
                    }
                  { user.firstname && 
@@ -514,7 +515,7 @@ console.log("messageResponde: ", messageResponde, navbarUser.imageprofile)
                                     clearLocalStorage();
                                     resetActiveUSer();
                                     // Redirect to homepage after resetting states
-                                    redirectToPage('/');} }> <FontAwesomeIcon icon={faRightFromBracket} 
+                                    ;} }> <FontAwesomeIcon icon={faRightFromBracket} 
                                                                               style={{marginRight: '10px'}} /> Sign Out</span>
                     </div>
                    
