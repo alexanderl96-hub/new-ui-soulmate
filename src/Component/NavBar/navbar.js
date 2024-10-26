@@ -126,7 +126,7 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
   
 
     useEffect(() => {
-      if (data && gendern === '') {
+      if (data && gendern === '' && refreshUser === false) {
          const filteredProfiles = listOfPeople.filter(person =>
                     person.firstname.toLowerCase().includes(data.toLowerCase()) 
                   );
@@ -137,14 +137,23 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
           }, 20000);
         }
         console.log(filteredProfiles);
-      } else if (data && gendern !== '') {
+      } else if (data && gendern !== '' && refreshUser === false) {
             const filteredProfiles = listOfPeople.filter(person =>
               person.gender === gendern && person.firstname.toLowerCase().includes(data.toLowerCase()) 
             );
             setNameProfile(filteredProfiles);
           
-      }else if(refreshUser === true){
-        setNameProfile(listOfPeople)
+      }else if(data && gendern === '' && refreshUser === true){
+        const filteredProfiles = listOfPeople.filter(person =>
+          person.firstname.toLowerCase().includes(data.toLowerCase()) 
+        );
+        setNameProfile(filteredProfiles);
+      }else if(data && gendern === '' && refreshUser === true){
+        const filteredProfiles = listOfPeople.filter(person =>
+          person.gender === gendern && person.firstname.toLowerCase().includes(data.toLowerCase()) 
+        );
+        setNameProfile(filteredProfiles);
+      
       }
     }, [data, gendern, listOfPeople, setNameProfile ]);
 
