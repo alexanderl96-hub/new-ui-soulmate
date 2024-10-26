@@ -476,7 +476,7 @@ const NewJoiner = () => {
         };
       
         // Determine the country code from the array input
-        const countryAbbreviation = isoCode.toUpperCase();
+        const countryAbbreviation = isoCode?.toUpperCase();
         const formatPattern = countryFormats[countryAbbreviation] || '+XXX XXXXXXXXXXX'; // Default format if country not found
       
         let formattedNumber = '';

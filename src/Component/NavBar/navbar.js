@@ -30,6 +30,7 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
   const [passwordLogin, setPasswordLogin]  = useState('')
   const [navbarUser, setNavbarUser] = useState([])
   const [messageResponde, setMessageResponde] = useState('')
+  const [updateUserStatus, setUpdateUserStatus] = useState([])
 
   const [sendDataCheck, setSendDataCheck] = useState(false)
 
@@ -39,6 +40,15 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
         setAdvance_SearchFilter(false)
         setGender('')
     }
+
+    useEffect(()=>{
+      axios.get("https://meet-yoursoul-mate-backend.adaptable.app/newJoiner")
+      .then(res => 
+
+          setListOfPeople(res.data.data_newJoiner)
+        )
+      .catch( res =>  console.log("Response error => ", res.data))
+     },[])
 
     useEffect(()=>{
            axios.get("https://meet-yoursoul-mate-backend.adaptable.app/newMember")
@@ -65,6 +75,36 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
                   // Properly serialize the object to JSON
                   localStorage.setItem('username', JSON.stringify(findUser[0]));
 
+
+                  
+                 const useFilterByID = listOfPeople.filter(a => a.memberjoinercode === findUser[0].membershipcode)
+                    
+               
+                  const updatedUserStatus = {
+                    ...useFilterByID[0], // Use the found user's data
+                    active: true,
+                    storageImage : useFilterByID[0].storageimage
+
+                  };
+
+                  setUpdateUserStatus(useFilterByID)
+
+                  console.log("updatedUserStatus:  ",useFilterByID[0].id, updatedUserStatus)
+
+                  axios.patch(`https://meet-yoursoul-mate-backend.adaptable.app/newJoiner/${useFilterByID[0]?.id}`,
+                     updatedUserStatus,  {
+                      headers: {
+                        'Content-Type': 'application/json'
+
+                      }
+                    } )
+                      .then(res => 
+                             console.log("responde data update: ", res.data)
+                        )
+                      .catch( error =>  console.log("Response error => ", error)) 
+
+
+
                 } else {
                   console.error('findUser[0] is not a valid object:', findUser[0]);
                 }
@@ -75,24 +115,14 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
                 setMessageResponde(''); 
                }
 
-                // setUserActive(true)
-
-              
             }
             
           })
            .catch( res =>  console.log("Response error => ", res.data))
-    },[emailLogin, passwordLogin,  sendDataCheck, setNavbarUser,
+    },[emailLogin, passwordLogin,  sendDataCheck, setNavbarUser, setUpdateUserStatus,
       setEmailLogin, setPasswordLogin, setLoginUser, setMessageResponde ])
 
-    useEffect(()=>{
-      axios.get("https://meet-yoursoul-mate-backend.adaptable.app/newJoiner")
-      .then(res => 
-
-          setListOfPeople(res.data.data_newJoiner)
-        )
-      .catch( res =>  console.log("Response error => ", res.data))
-     },[])
+  
 
     useEffect(() => {
       if (data && gendern === '') {
@@ -113,7 +143,7 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
             setNameProfile(filteredProfiles);
           
       }
-    }, [data, gendern, listOfPeople, setNameProfile]);
+    }, [data, gendern, listOfPeople, setNameProfile ]);
 
     const redirectToPage = (path) => {
       navigate(path);
@@ -243,7 +273,31 @@ function formatAmericanPhoneNumber(phoneNumber) {
     return phoneNumber;
   }
 }
-     
+
+ 
+function resetActiveUSer() { 
+
+    const resetUserStatus = {
+      ...updateUserStatus[0], // Use the found user's data
+      active: false,
+      storageImage: updateUserStatus[0]?.storageimage,
+    };
+
+    axios.patch(`https://meet-yoursoul-mate-backend.adaptable.app/newJoiner/${updateUserStatus[0]?.id}`,
+      resetUserStatus,  {
+       headers: {
+         'Content-Type': 'application/json'
+
+       }
+     } )
+       .then(res => 
+              console.log("responde data update: ", res.data)
+         )
+       .catch( error =>  console.log("Response error => ", error)) 
+
+
+}
+
 
 console.log("messageResponde: ", messageResponde, navbarUser.imageprofile)
 
@@ -444,7 +498,7 @@ console.log("messageResponde: ", messageResponde, navbarUser.imageprofile)
                                     setUser({});
                                     setNavbarUser([]);
                                     clearLocalStorage();
-
+                                    resetActiveUSer();
                                     // Redirect to homepage after resetting states
                                     redirectToPage('/');} }> <FontAwesomeIcon icon={faRightFromBracket} 
                                                                               style={{marginRight: '10px'}} /> Sign Out</span>
