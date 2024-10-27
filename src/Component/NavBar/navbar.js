@@ -51,79 +51,242 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
       .catch( res =>  console.log("Response error => ", res.data))
      },[setListOfPeople])
 
-    useEffect(()=>{
-           axios.get("https://meet-yoursoul-mate-backend.adaptable.app/newMember")
-           .then(res => {
-             const dataMember =  res.data.data_newMember
+    // useEffect(()=>{
 
-             if (emailLogin  && passwordLogin && sendDataCheck ) {
-              const findUser = dataMember.filter(
-                a => a.email === emailLogin && revertTokenGenerate(a.password) === passwordLogin
-              );
+    //   const userCredentials = {
+    //     "email": emailLogin,
+    //     "password": passwordLogin,
+    //   }
+
+    //     axios.post("https://meet-yoursoul-mate-backend.adaptable.app/newMember/login", userCredentials)
+    //          .then(res => {
+    //               const tokenUser = res.data.token
+    //               const dataMember = res.data.user
+
+    //               if (emailLogin  && passwordLogin && sendDataCheck ) {
+    //                  console.log("dataexist Im inside")
+
+    //                   if(dataMember){
+    //                     console.log("datamente: ", dataMember)
+                       
+    //                       // setMessageResponde('Incorrect email or password')
+    //                       // setTimeout(() => {  setMessageResponde(''); 
+    //                       //                   setEmailLogin('')
+    //                       //                   setPasswordLogin('')
+    //                       //                   setSendDataCheck(false)
+    //                       //                   }, 2000);
+    //                   }else{
+    //                     console.log("not found")
+    //                         // setLoginUser(false);
+    //                         // setNavbarUser(dataMember);
+
+
+    //                       //   if (dataMember && typeof dataMember === 'object') {
+    //                       //     localStorage.setItem('username', JSON.stringify(dataMember))
+    //                       //     localStorage.setItem('userToken', tokenUser)
+  
+  
+    //                       //     const useFilterByID = listOfPeople.filter(a => a.memberjoinercode === dataMember.membershipcode);
+  
+    //                       //     const updatedUserStatus = {
+    //                       //             ...useFilterByID[0], // Use the found user's data
+    //                       //                   active: true,
+    //                       //             storageImage : useFilterByID[0].storageimage
+    //                       //     };
+  
+    //                       //     setUpdateUserStatus(useFilterByID);
+  
+    //                       //     axios.patch(`https://meet-yoursoul-mate-backend.adaptable.app/newJoiner/${useFilterByID[0]?.id}`,
+    //                       //                 updatedUserStatus,  {
+    //                       //                   headers: {
+    //                       //                     'Content-Type': 'application/json'
+                      
+    //                       //                   }
+    //                       //                 } )
+    //                       //                   .then(res => 
+    //                       //                         console.log("responde data update: ", res.data)
+    //                       //                     )
+    //                       //                   .catch( error =>  console.log("Response error => ", error)) 
+                      
+    //                       //                   setRefreshUser(true)
+                          
+                        
+    //                       //   }else {
+    //                       //               console.error('findUser[0] is not a valid object:', dataMember);
+    //                       // }
+
+                           
+    //                       // setEmailLogin('');
+    //                       // setPasswordLogin('');
+    //                       // setMessageResponde(''); 
+    //                 }
+    //               }
+
+
+    //          })
+    //          .catch(res => res.message)
+
+
+
+
+
+    //       //  axios.get("https://meet-yoursoul-mate-backend.adaptable.app/newMember")
+    //       //  .then(res => {
+    //       //    const dataMember =  res.data.data_newMember
+
+    //       //    if (emailLogin  && passwordLogin && sendDataCheck ) {
+    //       //     const findUser = dataMember.filter(
+    //       //       a => a.email === emailLogin && revertTokenGenerate(a.password) === passwordLogin
+    //       //     );
                  
-              if(!findUser.length > 0){
+    //       //     if(!findUser.length > 0){
                
-                setMessageResponde('Incorrect email or password')
-                setTimeout(() => {  setMessageResponde(''); 
-                                   setEmailLogin('')
-                                   setPasswordLogin('')
-                                   setSendDataCheck(false)
-                                  }, 2000);
-               }else{
-                setLoginUser(false);
-                setNavbarUser(findUser);
-                if (findUser && findUser[0] && typeof findUser[0] === 'object') {
-                  // Properly serialize the object to JSON
-                  localStorage.setItem('username', JSON.stringify(findUser[0]));
+    //       //       setMessageResponde('Incorrect email or password')
+    //       //       setTimeout(() => {  setMessageResponde(''); 
+    //       //                          setEmailLogin('')
+    //       //                          setPasswordLogin('')
+    //       //                          setSendDataCheck(false)
+    //       //                         }, 2000);
+    //       //      }else{
+    //       //       setLoginUser(false);
+    //       //       setNavbarUser(findUser);
+    //       //       if (findUser && findUser[0] && typeof findUser[0] === 'object') {
+    //       //         // Properly serialize the object to JSON
+    //       //         localStorage.setItem('username', JSON.stringify(findUser[0]));
 
 
                   
-                 const useFilterByID = listOfPeople.filter(a => a.memberjoinercode === findUser[0].membershipcode)
+    //       //        const useFilterByID = listOfPeople.filter(a => a.memberjoinercode === findUser[0].membershipcode)
                     
                
-                  const updatedUserStatus = {
-                    ...useFilterByID[0], // Use the found user's data
-                    active: true,
-                    storageImage : useFilterByID[0].storageimage
+    //       //         const updatedUserStatus = {
+    //       //           ...useFilterByID[0], // Use the found user's data
+    //       //           active: true,
+    //       //           storageImage : useFilterByID[0].storageimage
 
-                  };
+    //       //         };
 
-                  setUpdateUserStatus(useFilterByID)
+    //       //         setUpdateUserStatus(useFilterByID)
 
-                  console.log("updatedUserStatus:  ",useFilterByID[0].id, updatedUserStatus)
+    //       //         console.log("updatedUserStatus:  ",useFilterByID[0].id, updatedUserStatus)
 
-                  axios.patch(`https://meet-yoursoul-mate-backend.adaptable.app/newJoiner/${useFilterByID[0]?.id}`,
-                     updatedUserStatus,  {
-                      headers: {
-                        'Content-Type': 'application/json'
+    //       //         axios.patch(`https://meet-yoursoul-mate-backend.adaptable.app/newJoiner/${useFilterByID[0]?.id}`,
+    //       //            updatedUserStatus,  {
+    //       //             headers: {
+    //       //               'Content-Type': 'application/json'
 
-                      }
-                    } )
-                      .then(res => 
-                             console.log("responde data update: ", res.data)
-                        )
-                      .catch( error =>  console.log("Response error => ", error)) 
+    //       //             }
+    //       //           } )
+    //       //             .then(res => 
+    //       //                    console.log("responde data update: ", res.data)
+    //       //               )
+    //       //             .catch( error =>  console.log("Response error => ", error)) 
 
-                      setRefreshUser(true)
+    //       //             setRefreshUser(true)
 
-                } else {
-                  console.error('findUser[0] is not a valid object:', findUser[0]);
-                }
+    //       //       } else {
+    //       //         console.error('findUser[0] is not a valid object:', findUser[0]);
+    //       //       }
 
                
+    //       //       setEmailLogin('');
+    //       //       setPasswordLogin('');
+    //       //       setMessageResponde(''); 
+    //       //      }
+
+    //       //   }
+            
+    //       // })
+    //        .catch( res =>  console.log("Response error => ", res.data))
+    // },[emailLogin, passwordLogin,  sendDataCheck, setNavbarUser, setUpdateUserStatus,
+    //   setEmailLogin, setPasswordLogin, setLoginUser, setMessageResponde, setRefreshUser ])
+
+    useEffect(() => {
+      if (emailLogin && passwordLogin && sendDataCheck) {
+        const userCredentials = {
+          email: emailLogin,
+          password: passwordLogin,
+        };
+    
+        axios.post("https://meet-yoursoul-mate-backend.adaptable.app/newMember/login", userCredentials)
+          .then(res => {
+
+            console.log("Responde form post login: ", res.data)
+            const tokenUser = res.data.token;
+            const dataMember = res.data.user;
+    
+            if (dataMember) {
+                setLoginUser(false);
+                setNavbarUser(dataMember);
+              console.log("User authenticated:", dataMember);
+    
+              // Store user and token in localStorage
+              localStorage.setItem('username', JSON.stringify(dataMember));
+              localStorage.setItem('userToken', tokenUser);
+    
+              // Filter by membership code
+              const useFilterByID = listOfPeople.filter(
+                a => a.memberjoinercode === dataMember.membershipcode
+              );
+    
+              if (useFilterByID.length > 0) {
+                // Update user status
+                const updatedUserStatus = {
+                  ...useFilterByID[0],
+                  active: true,
+                  storageImage: useFilterByID[0].storageimage
+                };
+    
+                // Set local state
+                setUpdateUserStatus(useFilterByID);
+    
+                // Perform PATCH request to update user status
+                axios.patch(`https://meet-yoursoul-mate-backend.adaptable.app/newJoiner/${useFilterByID[0].id}`, updatedUserStatus, {
+                  headers: {
+                    'Content-Type': 'application/json',
+                  }
+                })
+                  .then(response => {
+                    console.log("User status updated:", response.data);
+                    setRefreshUser(true); // Refresh user data after update
+                  })
+                  .catch(error => console.error("Update error:", error));
+    
+              } else {
+                console.error('User not found in listOfPeople');
+              }
+    
+              // Reset login inputs
+              setEmailLogin('');
+              setPasswordLogin('');
+              setMessageResponde('');
+    
+            } else {
+              console.error('User data not found');
+              setMessageResponde('Incorrect email or password');
+              setTimeout(() => {
+                setMessageResponde('');
                 setEmailLogin('');
                 setPasswordLogin('');
-                setMessageResponde(''); 
-               }
-
+                setSendDataCheck(false);
+              }, 2000);
             }
-            
           })
-           .catch( res =>  console.log("Response error => ", res.data))
-    },[emailLogin, passwordLogin,  sendDataCheck, setNavbarUser, setUpdateUserStatus,
-      setEmailLogin, setPasswordLogin, setLoginUser, setMessageResponde, setRefreshUser ])
-
-  
+          .catch(error => {
+            console.error("API error:", error);
+            setMessageResponde('Incorrect email or password');
+            setTimeout(() => {
+              setMessageResponde('');
+              setEmailLogin('');
+              setPasswordLogin('');
+              setSendDataCheck(false);
+            }, 2000);
+          });
+      }
+    }, [emailLogin, passwordLogin, sendDataCheck, listOfPeople, 
+        setNavbarUser, setUpdateUserStatus, setEmailLogin, 
+        setPasswordLogin, setLoginUser, setMessageResponde, setRefreshUser]);
+    
 
     useEffect(() => {
        if(refreshUser === true){
@@ -309,8 +472,8 @@ function resetActiveUSer() {
          )
        .catch( error =>  console.log("Response error => ", error)) 
 
-       setRefreshUser(true)
-       redirectToPage('/')
+       setRefreshUser(true);
+       redirectToPage('/');
 }
 
 

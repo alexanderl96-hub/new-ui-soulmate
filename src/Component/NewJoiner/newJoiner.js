@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 // import { faPaperPlaneTop } from "@fortawesome/free-solid-svg-icons";
 import { useCallback } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import axios from 'axios';
 import './newJoiner.css'
@@ -11,6 +12,7 @@ import Register from './registerNewJoiner'
 
 
 const NewJoiner = () => {
+  const navigate = useNavigate(); 
   const [open, setOpen] = useState(false)
     const [countryCodes, setCountryCodes] = useState([]);
     const [countryCodesCities, setCountryCodesCities] = useState([]);
@@ -1384,10 +1386,6 @@ const NewJoiner = () => {
  
              // Show success message
              setMessageJoin('Thank you! Congrats on successfully subscribing to Meet Your Soulmate!');
-            //  setTimeout(() => { setMessageJoin('');
-            //     window.location.reload() }, 400000);
- 
-             // Refresh the page after submission
              
          })
          .catch(error => {
@@ -1397,6 +1395,9 @@ const NewJoiner = () => {
 
 
 console.log("register: ", newJoinRegistration) 
+const redirectToPage = (path) => {
+  navigate(path);
+};
 
   const handleSubmitResgistration = () => {
       
@@ -1426,6 +1427,7 @@ console.log("register: ", newJoinRegistration)
               setMessageJoin('Thank you! Congrats on successfully Register to Meet Your Soulmate!');
               setTimeout(() => { setMessageJoin('');
                 window.location.reload() }, 4000);
+              redirectToPage('/');
                 
             }
       )
