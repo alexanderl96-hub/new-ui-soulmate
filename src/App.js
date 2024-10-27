@@ -29,7 +29,9 @@ function App() {
   useEffect(() => {
     const loadUserFromLocalStorage = () => {
       const savedUsername = JSON.parse(sessionStorage.getItem('username'));
+      console.log("savedUsername, ", savedUsername)
       if (savedUsername) {
+
         setUser(savedUsername);
       } else {
         setUser({});
@@ -47,6 +49,7 @@ function App() {
       window.removeEventListener('storageUpdate', loadUserFromLocalStorage);
     };
   }, [user, setUser]);
+
 
 
   // useEffect(()=>{

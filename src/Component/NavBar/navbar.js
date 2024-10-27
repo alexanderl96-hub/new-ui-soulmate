@@ -202,6 +202,8 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
     //   setEmailLogin, setPasswordLogin, setLoginUser, setMessageResponde, setRefreshUser ])
 
     useEffect(() => {
+
+      
       if (emailLogin && passwordLogin && sendDataCheck) {
         const userCredentials = {
           email: emailLogin,
@@ -576,7 +578,7 @@ console.log("messageResponde: ", messageResponde, navbarUser.imageprofile)
            <div 
                 style={{display: 'flex', flexDirection: 'column', cursor: 'pointer'}}>
                 {!user.firstname &&  
-                          <h4 onClick={() =>{setLoginUser(true); redirectToPage('/')}
+                          <h4 onClick={() =>{setLoginUser(fig => !fig); redirectToPage('/')}
                                               }>LOGIN</h4>
                    }
                  { user.firstname && 

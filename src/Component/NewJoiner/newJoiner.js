@@ -1419,14 +1419,24 @@ const redirectToPage = (path) => {
         setTimeout(() => { setMessageJoin('') }, 4000);
         return;  // Stop form submission if validation fails
     }
+
+
     
-  axios.post('https://meet-yoursoul-mate-backend.adaptable.app/newMember', newJoinRegistration)
+   axios.post('https://meet-yoursoul-mate-backend.adaptable.app/newMember', newJoinRegistration)
         .then(res =>
             {
+              const tokenUser = res.data.token;
+              const dataMember = res.data.addingNewMember;
+              sessionStorage.setItem('username', JSON.stringify(dataMember));
+              sessionStorage.setItem('userToken', tokenUser);
+
               setActiveFinalRegister(false)
               setMessageJoin('Thank you! Congrats on successfully Register to Meet Your Soulmate!');
-              setTimeout(() => { setMessageJoin('');
-                window.location.reload() }, 4000);
+              setMessageJoin('');
+              window.location.reload()
+
+              // setTimeout(() => { setMessageJoin('');
+              //   window.location.reload() }, 4000);
               redirectToPage('/');
                 
             }
