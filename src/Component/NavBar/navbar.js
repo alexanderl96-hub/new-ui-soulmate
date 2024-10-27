@@ -221,8 +221,8 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
               console.log("User authenticated:", dataMember);
     
               // Store user and token in localStorage
-              localStorage.setItem('username', JSON.stringify(dataMember));
-              localStorage.setItem('userToken', tokenUser);
+              sessionStorage.setItem('username', JSON.stringify(dataMember));
+              sessionStorage.setItem('userToken', tokenUser);
     
               // Filter by membership code
               const useFilterByID = listOfPeople.filter(

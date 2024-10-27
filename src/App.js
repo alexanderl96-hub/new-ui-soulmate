@@ -21,14 +21,14 @@ function App() {
   const [user, setUser] = useState({})
 
   const clearLocalStorage = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     // Dispatch a custom event to notify React components
     window.dispatchEvent(new Event('storageUpdate'));
   };
 
   useEffect(() => {
     const loadUserFromLocalStorage = () => {
-      const savedUsername = JSON.parse(localStorage.getItem('username'));
+      const savedUsername = JSON.parse(sessionStorage.getItem('username'));
       if (savedUsername) {
         setUser(savedUsername);
       } else {
