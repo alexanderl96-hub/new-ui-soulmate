@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 
 const Members = ({isChecked, availability, countryName,  ageRangeStart,
                  ageRangeEnd, eyeColor, bustSize, toneskin, tonehair, speakLanguages, 
-                heightCM, weightLB, openGenderPick, setScrollToPosition, setPrevFilters, location }) => {
+                heightCM, weightLB, openGenderPick, setScrollToPosition, setPrevFilters, location
+                 }) => {
     
     // const [models, setModels] = useState([])
 
@@ -50,7 +51,7 @@ const Members = ({isChecked, availability, countryName,  ageRangeStart,
        useEffect(() => {
         
         const filteredMembers = listOfPeople.filter((person) => {
-          console.log("Check location", person.location  === "Corfu")
+          // console.log("Check location", person.location  === "Corfu")
           // Check if person matches all selected filters
           return (
             (!isChecked || person.vip === isChecked) &&
@@ -301,7 +302,7 @@ const Members = ({isChecked, availability, countryName,  ageRangeStart,
             <div className="container-members-display">
                 {allMembers.slice(countpage, nextpage).map((member, i) =>{
                     return(
-                        <div 
+                        <div key={i}
                              style={{background: '#282828', border:'0.5px solid black'}}> 
                                 <div  key={i} className="members-card"
                                 style={{

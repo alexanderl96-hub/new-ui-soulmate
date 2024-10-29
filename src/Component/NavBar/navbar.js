@@ -220,7 +220,7 @@ const NavBar = ({setOpenFilter, setOpenGenderPick, setScrollToBottom,
             if (dataMember) {
                 setLoginUser(false);
                 setNavbarUser(dataMember);
-              console.log("User authenticated:", dataMember);
+              // console.log("User authenticated:", dataMember);
     
               // Store user and token in localStorage
               sessionStorage.setItem('username', JSON.stringify(dataMember));
@@ -479,9 +479,9 @@ function resetActiveUSer() {
 }
 
 
-console.log("messageResponde: ", messageResponde, navbarUser.imageprofile)
+// console.log("messageResponde: ", messageResponde, navbarUser.imageprofile)
 
-    console.log("emailLogin:", emailLogin, "passwordLogin:  ",  passwordLogin , sendDataCheck )
+//     console.log("emailLogin:", emailLogin, "passwordLogin:  ",  passwordLogin , sendDataCheck )
     
     return(
         <div className="nav-container">

@@ -48,7 +48,8 @@ function App() {
     return () => {
       window.removeEventListener('storageUpdate', loadUserFromLocalStorage);
     };
-  }, [user, setUser]);
+    // user, setUser
+  }, []);
 
 
 
@@ -60,7 +61,7 @@ function App() {
 
   // },[])
  
-console.log(openFilter, 'openFilter')
+// console.log(openFilter, 'openFilter')
   return (
     <Router>
         <div className="App">  
@@ -103,7 +104,9 @@ console.log(openFilter, 'openFilter')
                                                               scrollToVIP={scrollToVIP} 
                                                               setScrollToVIP={setScrollToVIP} 
                                                               setPrevFilters={setPrevFilters} />} />   
-                      <Route path='/viewMember/:name' element={<MembersView   prevFilters={prevFilters} />} /> 
+                      <Route path='/viewMember/:name' element={<MembersView   prevFilters={prevFilters} 
+                                                                              user={user}
+                      />} /> 
                       <Route path='/new-join' element={ <NewJoiner />} />    
                 </Routes>
                 <FooterPage />

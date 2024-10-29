@@ -112,7 +112,7 @@ useEffect(()=>{
           // Properly access the testimonials
           const testimonionData = res.data.data_testimonion[0].testimonials;
           setTestimonials(testimonionData);
-          console.log("Formatted Testimonials:", testimonionData);
+        //   console.log("Formatted Testimonials:", testimonionData);
         } else {
           console.warn("Unexpected response format:", res.data);
         }
@@ -433,10 +433,10 @@ useEffect(() => {
                         <div className='countries'  >
                              {filterContries.map((country, index)=>{
                                 return(
-                                    <>
+                                    <div key={index}>
                                    {openCountries &&  <div className='show-countries' 
                                          onClick={(e)=> setCountryName(e.target.innerText) }>{ country }</div>}
-                                    </>
+                                    </div>
                                 )
                              })}
                         </div>
@@ -608,12 +608,12 @@ useEffect(() => {
                         <div className='location'  >
                              {filterCities.map((country, index)=>{
                                 return(
-                                    < >
+                                    < div key={index}>
                                    {openLocation &&  <div className='show-countries' 
                                        
                                       onClick={(e) => setLocation(e.target.innerText)}
                                           >{ country }</div>}
-                                    </>
+                                    </ div>
                                      //  onClick={(e)=> setCountryName(e.target.innerText)}
                                 )
                              })}

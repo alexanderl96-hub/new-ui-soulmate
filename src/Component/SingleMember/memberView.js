@@ -23,7 +23,7 @@ import Galery from '../Galery/galery';
 
 
 
-const MembersView = ({prevFilters})=> {
+const MembersView = ({prevFilters, user})=> {
     const [bgColorLeft, setBgColorLeft] = useState(false)
     const [bgColorRight, setBgColorRight] = useState(false)
     const [ativeChat, setActiveChat] = useState(false)
@@ -46,16 +46,19 @@ const MembersView = ({prevFilters})=> {
     const [filterMemberVideos, setFilterMemberVideos] = useState([])
     const [chatbox_Conversation, setChatbox_Conversation] = useState([])
     const [isAutoScroll, setIsAutoScroll] = useState(true);
-    // const memberVisitorIDTextRef = useRef()
-    // const memberIDTextRef = useRef()
+   
     const chatContainerRef = useRef(null);
-    // const prevLengthRef= useRef();
-    // const intervalIdRef = useRef(null);
+    const useFilterByID = listOfPeople.filter(
+      a => a.memberjoinercode === user.membershipcode
+    );
+    const currentmember = listOfPeople.filter(v => v.id === memberById);
+
+
     const [newConversation, setNewConversation] = useState({
-      chat_conversations_members : ["visitorID14", "memberID"],
+      chat_conversations_members : [ `${useFilterByID[0].memberjoinercode}`,`${currentmember[0].memberjoinercode}`],
       conversation : [
           {
-            memberIdentifytier : "visitorID14",
+            memberIdentifytier : `${useFilterByID[0].memberjoinercode}`,
             date : "",
             time : "",
             text_conversation: ""
@@ -63,38 +66,81 @@ const MembersView = ({prevFilters})=> {
           
       ]
     })
- 
 
-    useEffect(() => {
-      // Function to fetch data
-      const fetchConversations = () => {
-        axios
-          .get(
-            "http://localhost:5050/chatbox/member/?visitor=visitorID14&member=memberID"
-          )
-          .then((res) => {
-           
-            const previous_conversations = res.data.data_conversation;
-            setChatbox_Conversation(previous_conversations);
-            setIsAutoScroll(true);
+    const getData = () =>{
+      const visitor = `${useFilterByID[0].memberjoinercode}`;
+      const member = `${myMemberReady.memberjoinercode}`;
+     console.log(visitor, member)
 
-          })
-          .catch((error) => error );
-      };
-  
-      // Call fetchConversations immediately when the component mounts
-      fetchConversations();
+      const constructedURL = `http://localhost:5050/chatbox/member/?visitor=` + visitor + `&member=` + member
+      console.log("Constructed URL:", constructedURL);
 
-      // Set an interval to call the function every 20 seconds (20000 ms)
-      const intervalId = isAutoScroll === false
-    ? setInterval(fetchConversations, 20000) // Slower interval
-    : setInterval(fetchConversations, 3000); // Faster interval when auto-scroll is true
-
-      return () =>  clearInterval(intervalId);
-      
-    }, [setIsAutoScroll, setChatbox_Conversation, isAutoScroll ]);
+      axios
+        .get(constructedURL)
+        .then((res) => {
+          console.log("Previous conversations of this: ", res.data);
+          const previous_conversations = res.data.data_conversation;
+          setChatbox_Conversation(previous_conversations);
+          setIsAutoScroll(true);
+        })
+        .catch((error) => {
+          console.error("Error fetching conversations: ", error);
+          console.error("Error details:", error.response?.data);  // Log error response for more details
+        });
+    }
 
 
+
+    // useEffect(() => {
+    //   // Safe encoding function to handle special characters
+    //   const safeEncodeURIComponent = (str) => {
+    //     if (typeof str !== 'string') return '';
+    //     return encodeURIComponent(str)
+    //       .replace(/[!'()*]/g, escape)  // Escape additional special characters
+    //       .replace(/%20/g, '+');  // Replace space with '+'
+    //   };
+    
+    //   // Function to fetch data
+    //   const fetchConversations = () => {
+    //     if (useFilterByID[0]?.memberjoinercode && myMemberReady?.memberjoinercode) {
+    //       const visitor = safeEncodeURIComponent(`${useFilterByID[0].memberjoinercode}`);
+    //       const member = safeEncodeURIComponent(`${myMemberReady.memberjoinercode}`);
+    
+    //       // Log the encoded values for debugging
+    //       console.log("Encoded Visitor:", visitor);
+    //       console.log("Encoded Member:", member);
+    
+    //       // Construct the URL
+    //       const constructedURL = `http://localhost:5050/chatbox/member/?visitor=${visitor}&member=${member}`;
+    //       console.log("Constructed URL:", constructedURL);
+    
+    //       axios
+    //         .get(constructedURL)
+    //         .then((res) => {
+    //           console.log("Previous conversations of this: ", res.data);
+    //           const previous_conversations = res.data.data_conversation;
+    //           setChatbox_Conversation(previous_conversations);
+    //           setIsAutoScroll(true);
+    //         })
+    //         .catch((error) => {
+    //           console.error("Error fetching conversations: ", error);
+    //           console.error("Error details:", error.response?.data);  // Log error response for more details
+    //         });
+    //     } else {
+    //       console.log("Member codes not available");
+    //     }
+    //   };
+    
+    //   // Call fetchConversations immediately when the component mounts
+    //   fetchConversations();
+    
+    //   // Adjust the interval based on isAutoScroll state
+    //   const intervalId = setInterval(fetchConversations, isAutoScroll === false ? 3000 : 20000);
+    
+    //   // Cleanup interval on component unmount
+    //   return () => clearInterval(intervalId);
+    // }, []);
+    
 
  // Function to get the current date in "YYYY-MM-DD" format
  const getCurrentDate = () => {
@@ -120,31 +166,6 @@ const scrollToBottom = () => {
   }
 };
 
-const submitNewConversation = () => {
-  axios.post("http://localhost:5050/chatbox/add-conversation", newConversation)
-       .then(res => {
-       const lasttext = newConversation.conversation[0]
-
-        setChatbox_Conversation(prev => [...prev, lasttext])
-        setNewConversation({
-          chat_conversations_members : ["visitorID14", "memberID"],
-          conversation : [
-              {
-                memberIdentifytier : "visitorID14",
-                date : "",
-                time : "",
-                text_conversation: ""
-              }
-              
-          ]
-        })
-        setIsAutoScroll(true);       
-
-  } )
-  .catch(error => error)
-
-
-}
 
 const handleTextNewConversation = (e) => {
   const newText = e.target.value;
@@ -162,6 +183,37 @@ const handleTextNewConversation = (e) => {
     ]
   }));
 };
+const submitNewConversation = () => {
+  console.log("newConvwersations: " , newConversation)
+
+axios.post("http://localhost:5050/chatbox/add-conversation", newConversation)
+   .then(res => {
+  //  const lasttext = newConversation.conversation[0]
+  //  const visitor = encodeURIComponent(`${useFilterByID[0]?.memberjoinercode}`);
+  //  const member = encodeURIComponent(`${myMemberReady?.memberjoinercode}`);
+
+    // setChatbox_Conversation(prev => [...prev, lasttext])
+    setNewConversation({
+      chat_conversations_members : [`${useFilterByID[0].memberjoinercode}`,`${currentmember[0].memberjoinercode}`],
+      conversation : [
+          {
+            memberIdentifytier : `${useFilterByID[0].memberjoinercode}`,
+            date : "",
+            time : "",
+            text_conversation: ""
+          }
+          
+      ]
+    })
+
+    setChatbox_Conversation(res.data.updateChat)
+    setIsAutoScroll(true);       
+
+} )
+.catch(error => error)
+
+
+}
 
 
 useEffect(() => {
@@ -305,7 +357,7 @@ useEffect(() => {
 
     const handleTextChange = (event) => {
       setCommentByMember({
-         memberName: "alex",
+         memberName: `${useFilterByID[0]?.firstname}`,
          member_to_review: myMemberReady?.firstname,
          review: [event.target.value],
          date: `${getFormattedDate()}`,
@@ -488,7 +540,7 @@ const isYesterday = (someDate) => {
                                                                    }}> <FontAwesomeIcon icon={faHandPointRight}  onClick={scrollToBottom} 
                                                                       className='finger-Pointer' />  "Let's to chat" </div> } 
                      {hoverChact && !ativeChat &&
-                      <div  style={{}}> "Want to chat ?" <FontAwesomeIcon icon={faMessage} 
+                      <div onClick={getData} style={{}}> "Want to chat ?" <FontAwesomeIcon icon={faMessage} 
                                         className='message'
                                          /> </div>
                                         }
